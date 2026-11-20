@@ -59,6 +59,14 @@ namespace Chateau_lab
             //   om texten till små bokstäver innan du jämför.
             //
             // TODO: skriv din loop här.
+            foreach(string name in _viner)
+            {
+                string checkName = name.ToLower();
+                if (checkName.Contains("chateau"))
+                {
+                    antalChateau++;
+                }
+            }
 
             txtResult.Text = $"Antal Château-viner: {antalChateau}";
         }
@@ -76,6 +84,17 @@ namespace Chateau_lab
             //   Du behöver alltså två räknare men fortfarande bara en loop.
             //
             // TODO: skriv din loop här.
+            foreach (string name in _viner)
+            {
+                string checkName = name.ToLower();
+                if (checkName.Contains("chateau"))
+                {
+                    antalChateau++;
+                }else if (checkName.Contains("amarone"))
+                {
+                    antalAmarone++;
+                }
+            }
 
             txtResult.Text = $"Antal Château-viner: {antalChateau}\nAntal Amarone-viner: {antalAmarone}";
         }
