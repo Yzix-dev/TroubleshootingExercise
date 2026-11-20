@@ -24,13 +24,13 @@ namespace Felsokning_lab
         {
             int[] talen = { 2, 3, 4, 5, 7 };
 
-            int summan = 0;
+            double summan = 0; // Made into double
             for (int i = 0; i < talen.Length; i++)
             {
                 summan = summan + talen[i];
             }
 
-            double medelvardet = summan / talen.Length;
+            double medelvardet = summan / talen.Length; 
 
             txtResult1.Text = $"Programmet säger: medelvärdet är {medelvardet}";
         }
@@ -42,9 +42,9 @@ namespace Felsokning_lab
             int slutTal = int.Parse(txtInput2.Text);
 
             int summan = 0;
-            for (int i = 1; i < slutTal; i++)
+            for (int i = 1; i <= slutTal; i++)
             {
-                summan = i;
+                summan = summan + i;
             }
 
             txtResult2.Text = $"Programmet säger: summan är {summan}";
@@ -59,7 +59,7 @@ namespace Felsokning_lab
             int storstaTalet = 0;
             for (int i = 0; i < talen.Length; i++)
             {
-                if (talen[i] < storstaTalet)
+                if (talen[i] > storstaTalet) // Ändras från < till >
                 {
                     storstaTalet = talen[i];
                 }
@@ -77,9 +77,9 @@ namespace Felsokning_lab
             int antalJamnaTal = 0;
             for (int i = 0; i < talen.Length; i++)
             {
-                if (talen[i] % 2 == 1)
+                if (talen[i] % 2 == 0) // ! pr == 0 both work mostly because % counts the number that is taken away when used as int
                 {
-                    antalJamnaTal = antalJamnaTal + 1;
+                    antalJamnaTal++; //Easier for me
                 }
             }
 
@@ -90,12 +90,12 @@ namespace Felsokning_lab
         // För 27 °C ska rätt svar vara 80,6 °F och "Det är varmt".
         private void OnEx5Click(object sender, RoutedEventArgs e)
         {
-            int celsius = int.Parse(txtInput5.Text);
+            double celsius = double.Parse(txtInput5.Text);
 
             double fahrenheit = celsius * 9 / 5 + 32;
 
             string meddelande;
-            if (celsius >= 80)
+            if (fahrenheit < 80) // Completely missed this part
             {
                 meddelande = "Det är varmt.";
             }
@@ -113,12 +113,28 @@ namespace Felsokning_lab
         private void OnEx6Click(object sender, RoutedEventArgs e)
         {
             int hojd = int.Parse(txtInput6.Text);
+            char star = '*';
+            // txtResult6 outputTxt later
+            List<string> starPyramid = new List<string> { };
+            int rad = 0;
+
+            for (int i = 0; i < hojd; i++)
+            {
+                starPyramid.Add("");
+                rad++;
+                for (int x = 0; x < rad; x++)
+                {
+                    starPyramid[i] = starPyramid[i] + star;
+                }
+                // https://stackoverflow.com/questions/13318561/adding-new-line-of-data-to-textbox här är radbryte som jag hittade
+                txtResult6.Text = txtResult6.Text + $"{starPyramid[i]}" + "\n"; // behöver bara \n förklarat av Gustav
+            }
 
             // TODO: Skriv din kod här med två nästlade for-loopar.
             // Den yttre loopen styr antalet rader (1 till hojd).
             // Den inre loopen skriver ut rätt antal stjärnor på varje rad.
 
-            txtResult6.Text = "Här ska din triangel visas.";
+            // txtResult6.Text = "Här ska din triangel visas.";
         }
     }
 }
