@@ -112,6 +112,7 @@ namespace Felsokning_lab
         // med hjälp av TVÅ nästlade for-loopar. Skriv resultatet till txtResult6.
         private void OnEx6Click(object sender, RoutedEventArgs e)
         {
+            /* FIRST SOLUTION
             int hojd = int.Parse(txtInput6.Text);
             char star = '*';
             // txtResult6 outputTxt later
@@ -128,7 +129,21 @@ namespace Felsokning_lab
                 }
                 // https://stackoverflow.com/questions/13318561/adding-new-line-of-data-to-textbox här är radbryte som jag hittade
                 txtResult6.Text = txtResult6.Text + $"{starPyramid[i]}" + "\n"; // behöver bara \n förklarat av Gustav
+            }*/
+
+            // Just wanted to figure out how the other student solved it with only one row, and tested it, it worked :]
+            int rows = int.Parse(txtInput6.Text);
+
+            string output = "";
+            string row = "";
+
+            for (int i = 0; i < rows; i++)
+            {
+                row = row + '*';
+                output = output + row + "\n";
             }
+
+            txtResult6.Text = output;
 
             // TODO: Skriv din kod här med två nästlade for-loopar.
             // Den yttre loopen styr antalet rader (1 till hojd).
