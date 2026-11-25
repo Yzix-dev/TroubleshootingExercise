@@ -27,7 +27,7 @@ namespace Felsokning_lab
             double summan = 0; // Made into double
             for (int i = 0; i < talen.Length; i++)
             {
-                summan = summan + talen[i];
+                summan += talen[i];
             }
 
             double medelvardet = summan / talen.Length; 
@@ -44,7 +44,7 @@ namespace Felsokning_lab
             int summan = 0;
             for (int i = 1; i <= slutTal; i++)
             {
-                summan = summan + i;
+                summan += i;
             }
 
             txtResult2.Text = $"Programmet säger: summan är {summan}";
@@ -139,8 +139,8 @@ namespace Felsokning_lab
 
             for (int i = 0; i < rows; i++)
             {
-                row = row + '*';
-                output = output + row + "\n";
+                row += '*';
+                output += row + "\n";
             }
 
             txtResult6.Text = output;
